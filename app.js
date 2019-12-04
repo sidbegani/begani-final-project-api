@@ -9,9 +9,7 @@ const IS_DEVELOPMENT = ENVIRONMENT === "development";
 app.use(express.json());
 app.use(
   cors({
-    origin: IS_DEVELOPMENT
-      ? "http://localhost:3000"
-      : "https://dtang-react-crud.surge.sh"
+    origin: IS_DEVELOPMENT ? "http://localhost:3000" : "http://localhost:3000"
   })
 );
 
@@ -81,4 +79,4 @@ app.put("/api/players/:id", (request, response) => {
   }
 });
 
-app.listen(process.env.PORT || 8000);
+app.listen(PORT || 8000);
