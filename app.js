@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: IS_DEVELOPMENT
-      ? "http://localhost:3000/players"
+      ? "http://localhost:3000"
       : "https://begani-final-project-api.herokuapp.com"
   })
 );
