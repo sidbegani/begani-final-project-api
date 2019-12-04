@@ -10,19 +10,15 @@ app.use(express.json());
 app.use(
   cors({
     origin: IS_DEVELOPMENT
-      ? "http://localhost:3000"
-      : "https://begani-final-project-api.herokuapp.com"
+      ? "https://begani-final-project-api.herokuapp.com"
+      : "http://localhost:3000"
   })
 );
 
 const db = {
   players: [
     {
-      id: 1,
-      first_name: "Sid",
-      last_name: "Begani",
-      element_type: "Mid",
-      team: "MU"
+      id: null
     }
   ]
 };
