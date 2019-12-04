@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -10,8 +11,8 @@ app.use(express.json());
 app.use(
   cors({
     origin: IS_DEVELOPMENT
-      ? "https://begani-final-project-api.herokuapp.com"
-      : "http://localhost:3000"
+      ? "http://localhost:3000"
+      : "https://begani-final-project-api.herokuapp.com"
   })
 );
 
