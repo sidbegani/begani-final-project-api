@@ -10,18 +10,12 @@ const IS_DEVELOPMENT = ENVIRONMENT === "development";
 app.use(express.json());
 app.use(
   cors({
-    origin: IS_DEVELOPMENT
-      ? "http://localhost:3000"
-      : "https://begani-final-project-api.herokuapp.com"
+    origin: IS_DEVELOPMENT ? "http://localhost:3000" : "colossal-son.surge.sh"
   })
 );
 
 const db = {
-  players: [
-    {
-      id: null
-    }
-  ]
+  players: []
 };
 
 app.get("/api/players", (request, response) => {
@@ -30,7 +24,7 @@ app.get("/api/players", (request, response) => {
 
 app.post("/api/players", (request, response) => {
   const favPlayer = request.body;
-  favPlayer.id = db.players.length + 1;
+  console.log(favPlayer);
   db.players.push(favPlayer);
   response.json(favPlayer);
 });
@@ -64,14 +58,17 @@ app.delete("/api/players/:id", (request, response) => {
   }
 });
 
-app.put("/api/players/:id", (request, response) => {
-  const id = Number(request.params.id);
+app.put("/api/players/:playerId/:teamId/edit", (request, response) => {
+  const id = Number(request.params.playerId);
+  const teamId = Number(request.params.teamId);
   const favPlayer = db.players.find(favPlayer => {
     return favPlayer.id === id;
   });
 
   if (favPlayer) {
     Object.assign(favPlayer, request.body);
+    Object.assign(favPlayer, { team: teamId });
+
     response.json(favPlayer);
   } else {
     response.status(404).send();
