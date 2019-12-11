@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: IS_DEVELOPMENT
       ? "http://localhost:3000"
-      : "knowledgeable-engine.surge.sh"
+      : "https://knowledgeable-engine.surge.sh"
   })
 );
 
