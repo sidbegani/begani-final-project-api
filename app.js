@@ -10,7 +10,9 @@ const IS_DEVELOPMENT = ENVIRONMENT === "development";
 app.use(express.json());
 app.use(
   cors({
-    origin: IS_DEVELOPMENT ? "http://localhost:3000" : "fragile-route.surge.sh"
+    origin: IS_DEVELOPMENT
+      ? "http://localhost:3000"
+      : "delicious-pizzas.surge.sh"
   })
 );
 
